@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מִפְעַל הַמַּמְתַּקִּים - תַּבְנִית 2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #E6E6FA 0%, #FFE4E1 50%, #FFB6C1 100%);
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* רקע ממתקים */
+        .candy-bg {
+            position: absolute;
+            font-size: 4vw;
+            opacity: 0.15;
+            animation: float 20s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+        
+        .container {
+            background: white;
+            border-radius: 2vh;
+            padding: 2vh 3vw;
+            box-shadow: 0 1vh 3vh rgba(0,0,0,0.2);
+            width: 155.55vh;
+            height: 87.5vh;
+            max-width: 95vw;
+            max-height: 53.44vw;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        h1 {
+            color: #9370DB;
+            font-size: 3.5vh;
+            margin-bottom: 1.5vh;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .diagram {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5vh;
+            margin: 1vh auto;
+            max-width: 50vw;
+            flex: 1;
+            justify-content: center;
+        }
+        
+        .top-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2vw;
+        }
+        
+        .box-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 1vh;
+        }
+        
+        .box-header {
+            font-size: 1.8vh;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+        }
+        
+        .box {
+            padding: 2vh;
+            border-radius: 1.5vh;
+            font-size: 3.5vh;
+            font-weight: bold;
+            min-height: 8vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 0.3vh solid #333;
+            box-shadow: 0 0.5vh 1vh rgba(0,0,0,0.1);
+        }
+        
+        .small {
+            background: #98FB98;
+        }
+        
+        .large {
+            background: #FFDAB9;
+        }
+        
+        .sum {
+            background: #FFD700;
+        }
+        
+        input {
+            width: 100%;
+            border: none;
+            background: transparent;
+            text-align: center;
+            font-size: 3.5vh;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        input:focus {
+            outline: 0.3vh solid #9370DB;
+            border-radius: 0.5vh;
+        }
+        
+        .disabled-field {
+            color: #666;
+            cursor: not-allowed;
+        }
+        
+        .buttons {
+            margin-top: 1.5vh;
+            display: flex;
+            gap: 2vw;
+            justify-content: center;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #9370DB, #8A2BE2);
+            color: white;
+            border: none;
+            padding: 1.2vh 3vw;
+            font-size: 2vh;
+            border-radius: 2vh;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 0.5vh 1.5vh rgba(147,112,219,0.3);
+            transition: all 0.3s;
+        }
+        
+        button:hover {
+            transform: translateY(-0.3vh);
+            box-shadow: 0 0.8vh 2vh rgba(147,112,219,0.4);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        .message {
+            margin-top: 1.5vh;
+            padding: 2vh;
+            border-radius: 1.5vh;
+            font-size: 2.3vh;
+            font-weight: bold;
+            display: none;
+            line-height: 1.5;
+        }
+        
+        .error {
+            background: #FFB6C6;
+            color: #8B0000;
+            border: 0.3vh solid #FF69B4;
+        }
+        
+        .success {
+            background: linear-gradient(135deg, #90EE90, #98FB98);
+            color: #006400;
+            border: 0.5vh solid #32CD32;
+            box-shadow: 0 0.5vh 2vh rgba(50, 205, 50, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <!-- רקע ממתקים -->
+    <div class="candy-bg" style="top: 8%; left: 12%;">🍰</div>
+    <div class="candy-bg" style="top: 18%; right: 12%; animation-delay: 2s;">🍩</div>
+    <div class="candy-bg" style="bottom: 18%; left: 18%; animation-delay: 4s;">🍪</div>
+    <div class="candy-bg" style="bottom: 12%; right: 12%; animation-delay: 6s;">🎂</div>
+    <div class="candy-bg" style="top: 45%; left: 8%; animation-delay: 3s;">🍭</div>
+    <div class="candy-bg" style="top: 55%; right: 10%; animation-delay: 5s;">🍬</div>
+    <div class="candy-bg" style="top: 30%; left: 48%; animation-delay: 1s;">🍫</div>
+    <div class="candy-bg" style="bottom: 40%; right: 42%; animation-delay: 7s;">🧁</div>
+
+    <div class="container">
+        <h1>🍬 מִפְעַל הַמַּמְתַּקִּים - חֶדֶר צֶמֶר גֶּפֶן מָתוֹק 🍬</h1>
+        
+        <div class="diagram">
+            <div class="top-row">
+                <div class="box-wrapper">
+                    <div class="box-header">הַקְּבוּצָה הַגְּדוֹלָה</div>
+                    <div class="box large">
+                        <input type="number" id="large" placeholder="?">
+                    </div>
+                </div>
+                <div class="box-wrapper">
+                    <div class="box-header">הַקְּבוּצָה הַקְּטַנָּה</div>
+                    <div class="box small">
+                        <input type="number" id="small" placeholder="?">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="box-wrapper">
+                <div class="box-header">סוֹף</div>
+                <div class="box sum">
+                    <input type="text" class="disabled-field" value="לֹא יָדוּעַ" readonly>
+                </div>
+            </div>
+        </div>
+        
+        <div class="buttons">
+            <button onclick="checkAnswer()">בִּדְקוּ תְּשׁוּבָה 🍭</button>
+        </div>
+        
+        <div id="message" class="message"></div>
+    </div>
+
+    <script>
+        function checkAnswer() {
+            const largeInput = document.getElementById('large');
+            const smallInput = document.getElementById('small');
+            const messageDiv = document.getElementById('message');
+            
+            const large = parseInt(largeInput.value);
+            const small = parseInt(smallInput.value);
+            
+            if (large === 23 && small === 18) {
+                messageDiv.className = 'message success';
+                messageDiv.style.display = 'block';
+                messageDiv.innerHTML = '<div style="font-size: 2.5vh; margin-bottom: 1vh;">🎉 מְעוֹלֶה! פָּתַרְתֶּם נָכוֹן! 🎉</div><div style="margin-top: 1vh; font-size: 2.2vh; color: #006400;">⬅️ לַחֲצוּ עַל הַחֵץ הָאָפוֹר כְּדֵי לַעֲבוֹר לַשָּׁלָב הַבָּא! ⬅️</div>';
+            } else {
+                messageDiv.className = 'message error';
+                messageDiv.style.display = 'block';
+                messageDiv.innerHTML = '😕 אוֹפְּס, זֶה עֲדַיִן לֹא נָכוֹן!<br><button onclick="tryAgain()" style="margin-top: 1vh; padding: 1vh 2.5vw; font-size: 1.8vh; background: linear-gradient(135deg, #9370DB, #8A2BE2); color: white; border: none; border-radius: 2vh; cursor: pointer; font-weight: bold;">נַסּוּ שׁוּב 🔄</button>';
+            }
+        }
+        
+        function tryAgain() {
+            const messageDiv = document.getElementById('message');
+            messageDiv.style.display = 'none';
+            document.getElementById('large').value = '';
+            document.getElementById('small').value = '';
+            document.getElementById('large').focus();
+        }
+        
+        // מניעת שינוי בשדות קבועים
+        document.querySelectorAll('.disabled-field').forEach(field => {
+            field.addEventListener('keydown', (e) => e.preventDefault());
+            field.addEventListener('paste', (e) => e.preventDefault());
+        });
+    </script>
+</body>
+</html>
